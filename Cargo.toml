@@ -1,13 +1,11 @@
 [package]
 name = "ipa-translate"
 description = "A crate for translating ASCII text to IPA"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/tirimid/ipa-translate"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 lazy_static = "1.4.0"
