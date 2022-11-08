@@ -1,10 +1,5 @@
 use ipa_translate;
 
-// the following phoneme inventories were taken from wikipedia.
-// to find the reference pages, search "<language> phonology".
-// since these tests are based on natural language phonologies, they will not be
-// exhaustive - oh well!
-
 #[test]
 fn english_phonemes() {
     let phonemes = vec![
