@@ -19,12 +19,12 @@ fn english_phonemes() {
 fn russian_phonemes() {
     let phonemes = vec![
         ("ii\"ueoa", "iɨueoa"),
-        ("mn", "mn"),
-        ("ptkbdg", "ptkbdɡ"),
-        ("ts", "ts"),
-        ("fss.xvzz.Q", "fsʂxvzʐɣ"),
-        ("lj", "lj"),
-        ("r<trl>", "r"),
+        ("mm<pzd>nn<pzd>", "mmʲnnʲ"),
+        ("pp<pzd>tt<pzd>kk<pzd>bb<pzd>dd<pzd>gg<pzd>", "ppʲttʲkkʲbbʲddʲɡɡʲ"),
+        ("tsts<pzd>", "tstsʲ"),
+        ("ff<pzd>ss<pzd>s.xx<pzd>vv<pzd>zz<pzd>z.Q", "ffʲssʲʂxxʲvvʲzzʲʐɣ"),
+        ("l<pzd>j", "lʲj"),
+        ("r<trl><pzd>r<trl>", "rʲr"),
     ];
 
     for group in phonemes {
@@ -36,8 +36,8 @@ fn russian_phonemes() {
 fn arabic_phonemes() {
     let phonemes = vec![
         ("iui:u:aa:awaj", "iuiːuːaaːawaj"),
-        ("ptkq?bddZg", "ptkqʔbddʒɡ"),
-        ("fTsSxXHh<?>vDzQg\"H<vcd>", "fθsʃxχħhvðzɣʁʕ"),
+        ("ptt<H>kq?bdd<H>dZg", "pttˤkqʔbddˤdʒɡ"),
+        ("fTss<H>SxXHh<?>vDzD<H>z<H>Qg\"H<vcd>", "fθssˤʃxχħhvðzðˤzˤɣʁʕ"),
         ("mn", "mn"),
         ("r<trl>", "r"),
         ("ljw", "ljw"),
