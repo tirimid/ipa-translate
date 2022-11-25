@@ -1,7 +1,8 @@
 [package]
 name = "ipa-translate"
+authors = ["tirimid"]
 description = "A crate for translating ASCII text to IPA"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 license = "MIT"
 readme = "README.md"

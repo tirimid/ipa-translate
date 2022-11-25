@@ -1,4 +1,3 @@
-#[macro_use]
 mod phonetics;
 
 use lazy_static::lazy_static;
@@ -39,6 +38,21 @@ fn translate_using_pairs(pairs: &Vec<TranslationPair>, text: &str) -> String {
 /// ```
 pub fn xsampa_to_ipa(text: &str) -> String {
     load_translation_pairs!(PAIRS = "../translations/xsampa.rs");
+    translate_using_pairs(&PAIRS, text)
+}
+
+/// Translates a Praat ASCII string to a unicode IPA string.
+/// Everything in the Praat manual entry under "Phonetic symbols" should be
+/// implemented here.
+///
+/// Example:
+/// ```
+/// let praat_text = r"p\rta\:ft\^h";
+/// let ipa_text = "pɹaːtʰ";
+/// assert_eq!(ipa_translate::praat_to_ipa(praat_text), ipa_text);
+/// ```
+pub fn praat_to_ipa(text: &str) -> String {
+    load_translation_pairs!(PAIRS = "../translations/praat.rs");
     translate_using_pairs(&PAIRS, text)
 }
 
