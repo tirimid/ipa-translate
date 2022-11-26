@@ -1,4 +1,6 @@
-mod phonetics;
+// this is not currently used.
+// the `phonetics` module will be used when I implement Kirshenbaum properly.
+//mod phonetics;
 
 use lazy_static::lazy_static;
 use regex::Regex;
@@ -28,9 +30,9 @@ fn translate_using_pairs(pairs: &Vec<TranslationPair>, text: &str) -> String {
 }
 
 /// Translates an X-SAMPA ASCII string to a unicode IPA string.
-/// Everything on the Wikipedia article "X-SAMPA" should be implemented here.
+/// Implemented according to [this Wikipedia article](https://en.wikipedia.org/wiki/X-SAMPA).
 ///
-/// Example:
+/// Usage example:
 /// ```
 /// let xsampa_text = "eks s{mp@";
 /// let ipa_text = "eks sæmpə";
@@ -42,10 +44,9 @@ pub fn xsampa_to_ipa(text: &str) -> String {
 }
 
 /// Translates a Praat ASCII string to a unicode IPA string.
-/// Everything in the Praat manual entry under "Phonetic symbols" should be
-/// implemented here.
+/// Implemented according to [this Praat manual entry](https://www.fon.hum.uva.nl/praat/manual/Phonetic_symbols.html).
 ///
-/// Example:
+/// Usage example:
 /// ```
 /// let praat_text = r"p\rta\:ft\^h";
 /// let ipa_text = "pɹaːtʰ";
@@ -56,16 +57,16 @@ pub fn praat_to_ipa(text: &str) -> String {
     translate_using_pairs(&PAIRS, text)
 }
 
-/// Translates a Kirshenbaum ASCII string to a unicode IPA string.
-/// This is not implemented fully according to specification.
-/// Blah blah blah list the changes here eventually.
+/// Translates a "Branner" ASCII string to a unicode IPA string.
+/// Implemented according to [this Wikipedia article](https://en.wikipedia.org/wiki/Comparison_of_ASCII_encodings_of_the_International_Phonetic_Alphabet).
 ///
-/// Example:
+/// Usage example:
 /// ```
-/// let kirshenbaum_text = "k{lmd,cnt,unr,vwl}:rS@nbO:m";
-/// let ipa_text = "kɜːrʃənbɔːm";
-// assert_eq!(ipa_translate::kirshenbaum_to_ipa(kirshenbaum_text), ipa_text);
+/// let branner_text = "br&ae):nE&r^";
+/// let ipa_text = "bɹæːnɜ˞";
+/// assert_eq!(ipa_translate::branner_to_ipa(branner_text), ipa_text);
 /// ```
-fn kirshenbaum_to_ipa(text: &str) -> String {
-    String::new()
+pub fn branner_to_ipa(text: &str) -> String {
+    load_translation_pairs!(PAIRS = "../translations/branner.rs");
+    translate_using_pairs(&PAIRS, text)
 }
