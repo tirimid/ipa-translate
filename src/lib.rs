@@ -70,3 +70,17 @@ pub fn branner_to_ipa(text: &str) -> String {
     load_translation_pairs!(PAIRS = "../translations/branner.rs");
     translate_using_pairs(&PAIRS, text)
 }
+
+/// Translates a SIL ASCII string to a unicode IPA string.
+/// Implemented according to [this KeymanHelp page](https://help.keyman.com/keyboard/sil_ipa/1.8.6/sil_ipa).
+///
+/// Usage example:
+/// ```
+/// let sil_text = "si=l";
+/// let ipa_text = "sɪl";
+/// assert_eq!(ipa_translate::sil_to_ipa(sil_text), ipa_text);
+/// ```
+pub fn sil_to_ipa(text: &str) -> String {
+    load_translation_pairs!(PAIRS = "../translations/sil.rs");
+    translate_using_pairs(&PAIRS, text)
+}
