@@ -1,7 +1,3 @@
-// this is not currently used.
-// the `phonetics` module will be used when I implement Kirshenbaum properly.
-//mod phonetics;
-
 use lazy_static::lazy_static;
 use regex::Regex;
 
