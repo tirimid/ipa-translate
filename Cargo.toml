@@ -2,7 +2,7 @@
 name = "ipa-translate"
 authors = ["tirimid"]
 description = "A crate for translating ASCII text to IPA"
-version = "0.1.7"
+version = "0.1.8"
 edition = "2021"
 license = "MIT"
 readme = "README.md"
@@ -10,4 +10,3 @@ repository = "https://github.com/tirimid/ipa-translate"
 
 [dependencies]
 lazy_static = "1.4.0"
-regex = "1.7.0"

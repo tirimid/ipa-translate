@@ -1,28 +1,21 @@
 use lazy_static::lazy_static;
-use regex::Regex;
 
-type TranslationPair = (Regex, &'static str);
+type TranslationPair = (&'static str, &'static str);
 
 macro_rules! load_translation_pairs {
-    ($pair_var:ident = $pair_file:literal) => {
-        lazy_static! {
-            static ref $pair_var: Vec<TranslationPair> = {
-                include!($pair_file)
-                    .into_iter()
-                    .map(|(r, e)| (Regex::new(r).unwrap(), e))
-                    .collect::<Vec<_>>()
-            };
-        }
-    };
+	($pair_var:ident = $pair_file:literal) => {
+		lazy_static! {
+			static ref $pair_var: Vec<TranslationPair> = include!($pair_file);
+		}
+	};
 }
 
 fn translate_using_pairs(pairs: &Vec<TranslationPair>, text: &str) -> String {
-    let mut text = text.to_string();
-    for pair in pairs.iter() {
-        text = pair.0.replace_all(&text, pair.1).to_string();
-    }
-
-    text
+	let mut text = text.to_string();
+	for pair in pairs {
+		text = text.replace(pair.0, pair.1);
+	}
+	text
 }
 
 /// Translates an X-SAMPA ASCII string to a unicode IPA string.
@@ -35,8 +28,8 @@ fn translate_using_pairs(pairs: &Vec<TranslationPair>, text: &str) -> String {
 /// assert_eq!(ipa_translate::xsampa_to_ipa(xsampa_text), ipa_text);
 /// ```
 pub fn xsampa_to_ipa(text: &str) -> String {
-    load_translation_pairs!(PAIRS = "../translations/xsampa.rs");
-    translate_using_pairs(&PAIRS, text)
+	load_translation_pairs!(PAIRS = "../translations/xsampa.rs");
+	translate_using_pairs(&PAIRS, text)
 }
 
 /// Translates a Praat ASCII string to a unicode IPA string.
@@ -49,8 +42,8 @@ pub fn xsampa_to_ipa(text: &str) -> String {
 /// assert_eq!(ipa_translate::praat_to_ipa(praat_text), ipa_text);
 /// ```
 pub fn praat_to_ipa(text: &str) -> String {
-    load_translation_pairs!(PAIRS = "../translations/praat.rs");
-    translate_using_pairs(&PAIRS, text)
+	load_translation_pairs!(PAIRS = "../translations/praat.rs");
+	translate_using_pairs(&PAIRS, text)
 }
 
 /// Translates a "Branner" ASCII string to a unicode IPA string.
@@ -63,8 +56,8 @@ pub fn praat_to_ipa(text: &str) -> String {
 /// assert_eq!(ipa_translate::branner_to_ipa(branner_text), ipa_text);
 /// ```
 pub fn branner_to_ipa(text: &str) -> String {
-    load_translation_pairs!(PAIRS = "../translations/branner.rs");
-    translate_using_pairs(&PAIRS, text)
+	load_translation_pairs!(PAIRS = "../translations/branner.rs");
+	translate_using_pairs(&PAIRS, text)
 }
 
 /// Translates a SIL ASCII string to a unicode IPA string.
@@ -77,6 +70,6 @@ pub fn branner_to_ipa(text: &str) -> String {
 /// assert_eq!(ipa_translate::sil_to_ipa(sil_text), ipa_text);
 /// ```
 pub fn sil_to_ipa(text: &str) -> String {
-    load_translation_pairs!(PAIRS = "../translations/sil.rs");
-    translate_using_pairs(&PAIRS, text)
+	load_translation_pairs!(PAIRS = "../translations/sil.rs");
+	translate_using_pairs(&PAIRS, text)
 }
