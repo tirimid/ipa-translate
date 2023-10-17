@@ -13,6 +13,7 @@ fn english_phonemes() {
 
 	for group in phonemes {
 		assert_eq!(ipa_translate::praat_to_ipa(group.0), group.1);
+		assert_eq!(ipa_translate::ipa_to_praat(group.1), group.0);
 	}
 }
 
@@ -31,6 +32,7 @@ fn russian_phonemes() {
 
 	for group in phonemes {
 		assert_eq!(ipa_translate::praat_to_ipa(group.0), group.1);
+		assert_eq!(ipa_translate::ipa_to_praat(group.1), group.0);
 	}
 }
 
@@ -48,5 +50,6 @@ fn arabic_phonemes() {
 
 	for group in phonemes {
 		assert_eq!(ipa_translate::praat_to_ipa(group.0), group.1);
+		assert_eq!(ipa_translate::ipa_to_praat(group.1), group.0);
 	}
 }
